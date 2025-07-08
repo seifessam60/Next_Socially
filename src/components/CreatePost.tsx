@@ -21,15 +21,14 @@ function CreatePost() {
     setIsPosting(true);
     try {
       const result = await createPost(content, imageUrl);
-      if (result.success) {
+      if (result?.success) {
         setContent("");
         setImageUrl("");
         toast.success("Post created successfully");
       }
     } catch (error) {
-        console.log("Error creating post:", error);
-        toast.error("Failed to create post");
-        
+      console.log("Error creating post:", error);
+      toast.error("Failed to create post");
     } finally {
       setIsPosting(false);
     }
